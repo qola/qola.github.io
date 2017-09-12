@@ -1,1 +1,17 @@
-test
+<html>
+
+    redirect test <br>
+    <input type="text" id="test1" size="60" value="http://localhost:8089/swagger-ui.html">
+    <input type="button" value="redirect" onclick="redirect()">
+
+    <script type="text/javascript">
+        function redirect() {
+            if(document.getElementById("test1").value == "") {
+                alert("url required");
+                return;
+            }
+            alert(document.getElementById("test1").value);
+            location.href = document.getElementById("test1").value;
+        }
+    </script>
+</html>
