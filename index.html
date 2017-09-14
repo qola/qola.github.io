@@ -2,7 +2,12 @@
 
     redirect test <br>
     <input type="text" id="test1" size="60" value="http://localhost:8089/swagger-ui.html">
-    <input type="button" value="redirect" onclick="redirect()">
+    <input type="button" value="get전송" onclick="redirect()">
+    <input type="button" value="post전송" onclick="redirectPost()">
+
+    <form name="myForm" method="post">
+        <input type="hidden" name="pg_token" value="test_token">
+    </form>
 
     <script type="text/javascript">
         function redirect() {
@@ -12,6 +17,20 @@
             }
             alert(document.getElementById("test1").value);
             location.href = document.getElementById("test1").value;
+        }
+
+        function redirectPost() {
+            if(document.getElementById("test1").value == "") {
+                alert("url required");
+                return;
+            }
+            if(document.getElementById("test1").value.indexOf("?") > 0) {
+                alert("파라메터를 제거하고 테스트 해주세요");
+                return;
+            }
+            document.myForm.action = document.getElementById("test1").value;
+            document.myForm.submit();
+
         }
     </script>
 </html>
